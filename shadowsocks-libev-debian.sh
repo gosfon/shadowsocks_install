@@ -12,8 +12,8 @@ export PATH
 # Current folder
 cur_dir=`pwd`
 
-libsodium_file="libsodium-1.0.15"
-libsodium_url="https://github.com/jedisct1/libsodium/releases/download/1.0.15/libsodium-1.0.15.tar.gz"
+libsodium_file="libsodium-1.0.16"
+libsodium_url="https://github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz"
 
 mbedtls_file="mbedtls-2.6.0"
 mbedtls_url="http://dl.teddysun.com/files/mbedtls-2.6.0-gpl.tgz"
@@ -283,17 +283,10 @@ pre_install(){
     echo "Press any key to start...or press Ctrl+C to cancel"
     char=`get_char`
 
-    # Check jessie in source.list
-    if debianversion 7; then
-        grep "jessie" /etc/apt/sources.list > /dev/null 2>&1
-        if [ $? -ne 0 ] && [ -r /etc/apt/sources.list ]; then
-            echo "deb http://http.us.debian.org/debian jessie main" >> /etc/apt/sources.list
-        fi
-    fi
     # Update System
     apt-get -y update
     # Install necessary dependencies
-    apt-get -y --no-install-recommends install gettext build-essential autoconf automake libtool openssl libssl-dev zlib1g-dev libpcre3-dev libudns-dev libev-dev libc-ares-dev
+    apt-get -y --no-install-recommends install gettext build-essential autoconf automake libtool openssl libssl-dev zlib1g-dev libpcre3-dev libev-dev libc-ares-dev
 }
 
 download() {
